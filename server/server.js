@@ -20,7 +20,7 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-  origin: ["https://my-mern-frontend.vercel.app"],
+  origin: ["https://smart-event-planner-8uu4.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
  /* origin: 'http://localhost:3000', // React app will run on this port
