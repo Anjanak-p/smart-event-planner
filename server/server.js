@@ -20,8 +20,11 @@ const app = express();
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000', // React app will run on this port
+  origin: ["https://my-mern-frontend.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
+ /* origin: 'http://localhost:3000', // React app will run on this port
+  credentials: true */
 }));
 
 // Body parser middleware
