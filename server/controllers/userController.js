@@ -73,9 +73,7 @@ export const registerUser = async (req, res) => {
   }
 };
 
-// @desc    Authenticate a user
-// @route   POST /api/users/login
-// @access  Public
+
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -126,9 +124,6 @@ export const loginUser = async (req, res) => {
   }
 };
 
-// @desc    Get user data
-// @route   GET /api/users/me
-// @access  Private
 export const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');

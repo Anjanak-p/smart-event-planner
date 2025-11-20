@@ -1,8 +1,5 @@
 import Event from "../models/Event.js";
 
-// @desc    Create new event
-// @route   POST /api/events
-// @access  Private
 export const createEvent = async (req, res) => {
   try {
     const { name, type, date, guests, budget, location, tasks } = req.body;
