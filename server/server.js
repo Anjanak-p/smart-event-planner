@@ -1,5 +1,5 @@
 import 'dotenv/config'; 
-console.log('Gemini key:', process.env.GEMINI_API_KEY ? 'Loaded ✅' : 'Missing ❌');
+console.log('Gemini key:', process.env.GEMINI_API_KEY ? 'Loaded ' : 'Missing ');
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -37,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 // Welcome route
 app.get("/", (req, res) => {
   res.json({
-    message: "🚀 Welcome to Smart Event Planner API!",
+    message: "Welcome to Smart Event Planner API!",
     version: "1.0.0",
     endpoints: {
       auth: "/api/users",
@@ -73,6 +73,6 @@ app.use((error, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-  console.log(`📚 API Documentation: http://localhost:${PORT}`);
+  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  console.log(` API Documentation: http://localhost:${PORT}`);
 });

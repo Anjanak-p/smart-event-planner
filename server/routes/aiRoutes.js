@@ -14,18 +14,18 @@ try {
   if (process.env.GEMINI_API_KEY) {
     genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-    console.log("✅ Gemini AI initialized successfully");
+    console.log(" Gemini AI initialized successfully");
   } else {
-    console.warn("⚠️ GEMINI_API_KEY not found in environment variables");
+    console.warn(" GEMINI_API_KEY not found in environment variables");
   }
 } catch (error) {
-  console.error("❌ Error initializing Gemini:", error);
+  console.error(" Error initializing Gemini:", error);
 }
 
 router.post("/suggest", async (req, res) => {
   try {
     const { type, guests, budget, location, theme } = req.body;
-    console.log("📨 Received AI request:", { type, guests, budget, location, theme });
+    console.log(" Received AI request:", { type, guests, budget, location, theme });
 
     // Validate required fields
     if (!type || !guests || !budget) {
@@ -37,7 +37,7 @@ router.post("/suggest", async (req, res) => {
 
     // If Gemini is not configured, return mock response
     if (!genAI || !model) {
-      console.log("🤖 Using mock AI response (Gemini not configured)");
+      console.log(" Using mock AI response (Gemini not configured)");
       const mockSuggestions = {
         wedding: `**Wedding Planning Suggestions**\n\n**Theme:** Romantic Garden\n**Guests:** ${guests}\n**Budget:** ₹${budget}\n\n**Checklist:**\n1. Book venue (40% of budget)\n2. Catering for ${guests} guests\n3. Photography & Videography\n4. Decorations and flowers\n5. Music and entertainment\n\n**Timeline:**\n- 6 months before: Book venue\n- 3 months: Send invitations\n- 1 month: Finalize menu\n- 2 weeks: Confirm vendors`,
         birthday: `**Birthday Party Suggestions**\n\n**Theme:** Celebration Time\n**Guests:** ${guests}\n**Budget:** ₹${budget}\n\n**Checklist:**\n1. Venue decoration\n2. Cake and food\n3. Games and activities\n4. Invitations\n5. Music and party favors\n\n**Budget Breakdown:**\n- Food: 40%\n- Decor: 20%\n- Entertainment: 20%\n- Miscellaneous: 20%`,
@@ -73,13 +73,13 @@ Please provide:
 
 Format the response in a clear, organized way with sections.`;
 
-    console.log("🚀 Sending request to Gemini...");
+    console.log("Sending request to Gemini...");
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const text = response.text();
 
-    console.log("✅ Gemini response received");
+    console.log(" Gemini response received");
 
     res.json({
       success: true,
@@ -89,7 +89,7 @@ Format the response in a clear, organized way with sections.`;
     });
 
   } catch (error) {
-    console.error("❌ AI Route Error:", error);
+    console.error(" AI Route Error:", error);
 
     // Provide more specific error messages
     if (error.message?.includes('API_KEY_INVALID')) {
