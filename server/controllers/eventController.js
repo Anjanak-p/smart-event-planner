@@ -39,9 +39,6 @@ export const createEvent = async (req, res) => {
   }
 };
 
-// @desc    Get all events for a user
-// @route   GET /api/events
-// @access  Private
 export const getEvents = async (req, res) => {
   try {
     const events = await Event.find({ userId: req.user.id }).sort({ date: 1 });
@@ -61,9 +58,7 @@ export const getEvents = async (req, res) => {
   }
 };
 
-// @desc    Get single event
-// @route   GET /api/events/:id
-// @access  Private
+
 export const getEvent = async (req, res) => {
   try {
     const event = await Event.findOne({ 
@@ -92,9 +87,6 @@ export const getEvent = async (req, res) => {
   }
 };
 
-// @desc    Update event
-// @route   PUT /api/events/:id
-// @access  Private
 export const updateEvent = async (req, res) => {
   try {
     let event = await Event.findOne({ 
@@ -130,9 +122,7 @@ export const updateEvent = async (req, res) => {
   }
 };
 
-// @desc    Delete event
-// @route   DELETE /api/events/:id
-// @access  Private
+
 export const deleteEvent = async (req, res) => {
   try {
     const event = await Event.findOne({ 
